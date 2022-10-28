@@ -2,5 +2,7 @@ flask
 gunicorn
 tensorflow
 numpy
-cv2
+opencv-python
 pillow
+pandas
+keras
