@@ -1,0 +1,47 @@
+{% extends 'base2.html' %}
+{% block content %}
+
+    <!-- page-title -->
+    <section class="page-title centred" style="background-image: url(../static/main/images/background/ai.jpg);">
+        <div class="container">
+            <div class="content-box" style="background-color: #d1491f;">
+                <div class="title">Deteksi Pneumonia dengan Gambar Rontgen Dada</div>
+            </div>
+        </div>
+    </section>
+    <!-- page-title end -->
+
+    <!-- Table-section -->
+    <section class="contact-section" id="result" style="padding-bottom: 50px;">
+        <div class="container">
+            <div class="title-box centred" style="padding-top: 5px; padding-bottom: 5px;">
+                <div class="sec-title">Hasil Prediksi</div>
+            </div>
+            <div class="row" >
+                        
+                        <img src="{{ url_for('static', filename=img) }}" alt="" class="img-fluid" style="display:block; margin:auto; height:300px; width:300px;">
+            </div>
+            
+                    <div class="contact-form-area">
+                       <center> <p style="margin: auto; display:block; color: black; text-transform: capitalize; font-size: 25px; font-weight: bold;">{{ model }} Model</p> 
+                        <p style="margin: auto; display:block; color: black; text-transform: capitalize; font-size: medium; font-weight: bold;"> Prediksi Label : {{ labels[pred] }}</p> 
+                        Accuracy : {{ (probs|max) }}% | Prediction Time : {{ (run_time) }} second
+                        <input type="hidden" id="probability" value={{(probs|max)}}> 
+                        <div id="myProgress">
+                            <div id="myBar">0%</div>
+                        </div> </center>
+                    </div>
+                </div>
+        </br>
+        <div class="container-login100-form-btn">
+            <button class="login100-form-btn" onclick="goBack()">Kembali</button>
+                <script>
+                        function goBack() {
+                        window.history.back();
+                                        }
+                </script>
+        </div>
+    </section>
+    <!-- final-section end -->
+
+    {% endblock %}
